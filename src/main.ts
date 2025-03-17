@@ -1,4 +1,5 @@
 import { GameController } from "./controllers/GameController";
+import { ModalView } from "./views/ModalView";
 
 document.addEventListener("DOMContentLoaded", async () => {
   async function loadWordList(): Promise<string[]> {
@@ -16,5 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     throw new Error("Wordlist is empty!");
   }
 
+  new ModalView("modal", "open-modal", "close-modal");
   new GameController(wordList);
 });

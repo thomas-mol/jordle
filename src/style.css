@@ -23,14 +23,30 @@ body {
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
   h1 {
-    margin-bottom: 1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
     letter-spacing: 4px;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    img {
+      width: 30px;
+    }
   }
 }
 
@@ -56,7 +72,7 @@ header {
       text-align: center;
       text-transform: uppercase;
       align-content: center;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
     .box.wrong,
     .box.almost,
@@ -73,11 +89,18 @@ header {
     .box.correct {
       background-color: var(--color-correct);
     }
-  }
-}
+    .box.pop {
+      animation: popIn 0.15s ease-in-out forwards;
+    }
 
-.flip {
-  animation: flip 0.5s ease-in-out;
+    .box.shake {
+      animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    .box.flip {
+      animation: flip 0.5s ease forwards;
+    }
+  }
 }
 
 @keyframes flip {
@@ -92,6 +115,40 @@ header {
   }
 }
 
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
 #keyboard-container {
   display: flex;
   flex-flow: column;
@@ -103,7 +160,7 @@ header {
 
   .letter {
     cursor: pointer;
-    aspect-ratio: 4 / 6;
+    aspect-ratio: 3 / 5;
     width: 2rem;
     margin: 2px 1px;
     font-weight: 600;
@@ -191,5 +248,49 @@ header {
   &.show {
     top: 20px;
     opacity: 1;
+  }
+}
+
+#modal {
+  margin: auto;
+  max-width: 520px;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  #close-modal {
+    float: inline-end;
+    margin-left: 1rem;
+    padding: 0.5em 0.75rem;
+  }
+
+  .modal-content {
+    padding: 1rem 1.5rem;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+
+  p,
+  ul {
+    margin-bottom: 1rem;
+
+    em {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
   }
 }

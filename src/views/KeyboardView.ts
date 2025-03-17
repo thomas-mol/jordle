@@ -1,6 +1,5 @@
 import { InputController } from "../controllers/InputController";
 
-// views/KeyboardView.ts
 export class KeyboardView {
   private container: HTMLElement;
   private inputController: InputController;
@@ -21,7 +20,6 @@ export class KeyboardView {
       const rowElement = document.createElement("div");
       rowElement.classList.add("keyboard-row");
 
-      // Add special Enter key to the start of the bottom row
       if (rowIndex === 2) {
         const enterKey = document.createElement("div");
         enterKey.classList.add("letter", "enter-key");
@@ -31,7 +29,6 @@ export class KeyboardView {
         rowElement.appendChild(enterKey);
       }
 
-      // Add letter keys
       letters.split("").forEach((letter) => {
         const letterElement = document.createElement("div");
         letterElement.classList.add("letter");
@@ -41,7 +38,6 @@ export class KeyboardView {
         rowElement.appendChild(letterElement);
       });
 
-      // Add special Backspace key to the end of the bottom row
       if (rowIndex === 2) {
         const backspaceKey = document.createElement("div");
         backspaceKey.classList.add("letter", "special-key");
@@ -54,7 +50,6 @@ export class KeyboardView {
       this.container.appendChild(rowElement);
     });
 
-    // Set up click handlers for keyboard keys
     this.inputController.setupClickHandlers(".letter");
   }
 

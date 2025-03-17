@@ -14,9 +14,35 @@
   </head>
   <body>
     <header>
-      <h1>JORDLE</h1>
+      <h1>Jordle</h1>
+      <button id="open-modal"><img src="/info-icon.png" alt="" /></button>
     </header>
     <div id="grid"></div>
     <div id="keyboard-container"></div>
   </body>
+  <!-- Credits / Info -->
+  <dialog id="modal">
+    <button id="close-modal">X</button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Information</h3>
+      </div>
+      <p>
+        This game is a Wordle variant, made for my girlfriend Jorien. It varies
+        slightly from the base game, since valid guesses and solutions are all
+        <em> 6-letter Dutch words. </em>
+      </p>
+      <p>Same rules as in the base game apply:</p>
+      <ul>
+        <li>Green: in the word & correct spot</li>
+        <li>Yellow: in the word, but wrong spot</li>
+        <li>Grey: not in the word</li>
+      </ul>
+      <p>
+        You can check out this project and other projects of mine on
+        <a href="https://github.com/thomas-mol">Github</a> or
+        <a href="https://thomasmol.be/">My Portfolio</a>
+      </p>
+    </div>
+  </dialog>
 </html>

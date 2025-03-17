@@ -33,7 +33,17 @@ export class GameView {
 
     const boxes = rowElement.querySelectorAll(".box");
     boxes.forEach((box, index) => {
-      (box as HTMLElement).textContent = guess[index] || "";
+      const boxElement = box as HTMLElement;
+      const letter = guess[index] || "";
+
+      if (letter !== boxElement.textContent) {
+        if (letter) {
+          boxElement.textContent = letter;
+          this.animateBox(boxElement, "pop");
+        } else {
+          boxElement.textContent = "";
+        }
+      }
     });
   }
 
@@ -48,14 +58,42 @@ export class GameView {
     const boxes = rowElement.querySelectorAll(".box");
     boxes.forEach((box, index) => {
       const boxElement = box as HTMLElement;
+      boxElement.textContent = guess[index] || "";
+
       setTimeout(() => {
-        boxElement.classList.add("flip");
-        boxElement.textContent = guess[index] || "";
-        boxElement.classList.add(feedback[index]);
+        this.animateBox(boxElement, "flip");
+
         setTimeout(() => {
-          boxElement.classList.remove("flip");
-        }, 500);
-      }, index * 300);
+          boxElement.classList.add(feedback[index]);
+        }, 250);
+      }, index * 200);
     });
+  }
+
+  animateInvalidGuess(rowIndex: number): void {
+    const rowElement = document.querySelector(`#row-${rowIndex}`);
+    if (!rowElement) return;
+
+    const boxes = rowElement.querySelectorAll(".box");
+
+    boxes.forEach((box) => {
+      const boxElement = box as HTMLElement;
+      this.animateBox(boxElement, "shake");
+    });
+  }
+
+  private animateBox(boxElement: HTMLElement, animationType: string): void {
+    boxElement.classList.remove("pop", "flip", "shake");
+
+    // void boxElement.offsetWidth;
+
+    boxElement.classList.add(animationType);
+
+    if (animationType !== "flip") {
+      const animationDuration = animationType === "pop" ? 150 : 500;
+      setTimeout(() => {
+        boxElement.classList.remove(animationType);
+      }, animationDuration);
+    }
   }
 }
