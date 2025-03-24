@@ -1,6 +1,6 @@
 # Jordle
 
-Jordle is a one-page Wordle clone built with HTML, CSS, and TypeScript. It provides a smooth and responsive gameplay experience without requiring a backend. The game grid is dynamically rendered using `<div>` elements for a clean and accessible design.
+Jordle is a one-page Wordle clone built with HTML, CSS, and TypeScript. It provides a smooth and responsive gameplay experience without requiring a backend.
 
 ## Features
 - 🟩 Simple, lightweight, and fast
@@ -42,8 +42,8 @@ Jordle is a one-page Wordle clone built with HTML, CSS, and TypeScript. It provi
 - 📝 Implement a custom word list
 - 📊 Track user statistics
 
-## License
-This project is open-source and available under the MIT License.
+## 📜 License
+This project is open-source and available under the **MIT License**.
 
 ---
 Made with ❤️ by Thomas Mol
